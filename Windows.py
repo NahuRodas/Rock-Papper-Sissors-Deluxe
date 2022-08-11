@@ -6,10 +6,11 @@ width, height= pyautogui.size()
 
 def backButton(window):
     window.destroy 
-    if window ==subMenu:
+    if window == subMenu:
         createMainMenu()     
 
 def createSubMenu():
+    mainMenu.destroy
     subMenu = Tk()
 
     frame = Frame(subMenu)
@@ -17,11 +18,11 @@ def createSubMenu():
     framePvp = Frame(subMenu)
     framePvp.pack(side=BOTTOM)
    
-    icon2 = PhotoImage(file = 'Resourses\\icon.png')
+ #   icon2 = PhotoImage(file = 'Resourses\\icon.png')
 
     subMenu.geometry(str(width)+"x"+str(height))
     subMenu.title("Rock, Paper, Sissors - DELUXE")
-    subMenu.iconphoto(True,icon2)
+   # subMenu.iconphoto(True,icon2)
     subMenu.config(background="#9cc2ff")
 
 
@@ -42,6 +43,7 @@ def createSubMenu():
 
 
 def createMainMenu():
+   # global mainMenu
     mainMenu = Tk()
 
     frame1 = Frame(mainMenu)
@@ -70,3 +72,16 @@ def createMainMenu():
 
 
 createMainMenu()
+
+
+ 
+    rockButton = Button(mainFrame, text="ROCK", font=('Comic Sans MS', 30, 'bold'), bg='#639fff')
+    rockButton.pack(expand=TRUE, fill="both")
+    createSmallSpace()
+    papperButton = Button(mainFrame, text="PAPPER", font=('Comic Sans MS', 20, 'bold'), bg='#639fff')
+    papperButton.pack(expand=TRUE, fill="both")
+    createSmallSpace()
+    scissorButton = Button(mainFrame, text="SCISSOR", font=('Comic Sans MS', 20, 'bold'), bg='#639fff')
+    scissorButton.pack(expand=TRUE, fill="both")
+
+    

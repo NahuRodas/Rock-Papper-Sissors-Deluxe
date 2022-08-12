@@ -75,13 +75,6 @@ createMainMenu()
 
 
  
-    rockButton = Button(mainFrame, text="ROCK", font=('Comic Sans MS', 30, 'bold'), bg='#639fff')
-    rockButton.pack(expand=TRUE, fill="both")
-    createSmallSpace()
-    papperButton = Button(mainFrame, text="PAPPER", font=('Comic Sans MS', 20, 'bold'), bg='#639fff')
-    papperButton.pack(expand=TRUE, fill="both")
-    createSmallSpace()
-    scissorButton = Button(mainFrame, text="SCISSOR", font=('Comic Sans MS', 20, 'bold'), bg='#639fff')
-    scissorButton.pack(expand=TRUE, fill="both")
+
 
     

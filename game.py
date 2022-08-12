@@ -1,5 +1,6 @@
 from tkinter import *
 from tkinter import ttk
+import random
 
 def createBigSpace():
     bigSpace = Label(mainFrame, text=" ", font=('Comic Sans MS', 110, 'bold'), bg='#9cc2ff')
@@ -35,36 +36,41 @@ def pvpButtonLogic():
     for x in mainFrame.winfo_children():
         x.destroy()
 
-    
+    listRPS = ["Rock", "Papper", "Scissor"]
+    choice = IntVar()
+    textMessage = "."
 
     createBigSpace()
     mainTittle = Label(mainFrame, text="Rock, Papper, Sissors - DELUXE", font=('Comic Sans MS', 40, 'bold'), fg='black', bg='#639fff', relief=RAISED, bd=10)
     mainTittle.pack(expand=TRUE, fill="both")
     createBigSpace()
-   
-    continueButton = Button(mainFrame, text="Continue", font=('Comic Sans MS', 20, 'bold'), bg='#639fff', command=continueButtonLogic)
-    continueButton.pack(expand=TRUE, fill="both")
+    messageBox = Label(mainFrame, text="You selected " + textMessage, font=('Comic Sans MS', 30, 'bold'), bg='#639fff')
+    messageBox.pack(expand=TRUE, fill="both")
+    createSmallSpace()
 
-def continueButtonLogic():
+    def gameLogic():
+        if (choice.get() == 0):
+            messageBox.destroy()
+            textMessage = "Rock"
+            messageBox = Label(mainFrame, text="You selected " + textMessage, font=('Comic Sans MS', 30, 'bold'), bg='#639fff')
+            messageBox.pack(expand=TRUE, fill="both")
+        elif (choice.get() == 1):
+            messageBox.destroy()
+            textMessage = "Papper"
+            createSmallSpace()
+            messageBox = Label(mainFrame, text="You selected " + textMessage, font=('Comic Sans MS', 30, 'bold'), bg='#639fff')
+            messageBox.pack(expand=TRUE, fill="both")
+        elif (choice.get() == 2):
+            messageBox.destroy()
+            textMessage = "Scissor"
+            createSmallSpace()
+            messageBox = Label(mainFrame, text="You selected " + textMessage, font=('Comic Sans MS', 30, 'bold'), bg='#639fff')
+            messageBox.pack(expand=TRUE, fill="both")
 
-    i = TRUE
-    if i:
-        entryBox = Entry(mainFrame, font=('Comic Sans MS', 30, 'bold'))
-        entryBox.pack(expand=TRUE, fill="both")
-        i == FALSE
-
-    players = ["Player 1","Player 2"]
-
-    for x in players:
-        x = entryBox.get()
-        entryBox.delete(0, END)
-        print(x)
-
-
-
-
-    
-
+    for index in range(len(listRPS)):
+        userChoice = Radiobutton(mainFrame, text=listRPS[index], variable=choice, value=index, indicatoron=0, font=('Comic Sans MS', 20, 'bold'), bg='#639fff', command=gameLogic)
+        userChoice.pack(expand=TRUE, fill="both")
+        createSmallSpace()
 
 
 

@@ -29,25 +29,42 @@ def playButtonLogic():
     createSmallSpace()
     backButton = Button(mainFrame, text="Back", font=('Comic Sans MS', 20, 'bold'), bg='#639fff', command=backButtonLogic)
     backButton.pack(expand=TRUE, fill="both")
-    
+
+
 def pvpButtonLogic():
     for x in mainFrame.winfo_children():
         x.destroy()
+
+    
 
     createBigSpace()
     mainTittle = Label(mainFrame, text="Rock, Papper, Sissors - DELUXE", font=('Comic Sans MS', 40, 'bold'), fg='black', bg='#639fff', relief=RAISED, bd=10)
     mainTittle.pack(expand=TRUE, fill="both")
     createBigSpace()
    
-    entryBox = Entry(mainFrame, font=('Comic Sans MS', 30, 'bold'))
-    entryBox.pack(expand=TRUE, fill="both")
+    continueButton = Button(mainFrame, text="Continue", font=('Comic Sans MS', 20, 'bold'), bg='#639fff', command=continueButtonLogic)
+    continueButton.pack(expand=TRUE, fill="both")
 
-    i = 0
-    players= ["",""]
+def continueButtonLogic():
+
+    i = TRUE
+    if i:
+        entryBox = Entry(mainFrame, font=('Comic Sans MS', 30, 'bold'))
+        entryBox.pack(expand=TRUE, fill="both")
+        i == FALSE
+
+    players = ["Player 1","Player 2"]
+
+    for x in players:
+        x = entryBox.get()
+        entryBox.delete(0, END)
+        print(x)
+
+
+
+
     
-    while entryBox == "\n":
-        players[i] = entryBox.get()
-        i+=1
+
 
 
 

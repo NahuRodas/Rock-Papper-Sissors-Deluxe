@@ -22,56 +22,135 @@ def playButtonLogic():
     mainTittle.pack(expand=TRUE, fill="both")
     createBigSpace()
 
-    pvpButton = Button(mainFrame, text="PVP", font=('Comic Sans MS', 30, 'bold'), bg='#639fff', command=pvpButtonLogic)
+    pvpButton = Button(mainFrame, text="PVP", font=('Comic Sans MS', 30, 'bold'), bg='#639fff')#, command=pvpButtonLogic)
     pvpButton.pack(expand=TRUE, fill="both")
     createSmallSpace()
-    pviButton = Button(mainFrame, text="PVI", font=('Comic Sans MS', 30, 'bold'), bg='#639fff')
+    pviButton = Button(mainFrame, text="PVI", font=('Comic Sans MS', 30, 'bold'), bg='#639fff', command= pviButtonLogic)
     pviButton.pack(expand=TRUE, fill="both")
     createSmallSpace()
     backButton = Button(mainFrame, text="Back", font=('Comic Sans MS', 20, 'bold'), bg='#639fff', command=backButtonLogic)
     backButton.pack(expand=TRUE, fill="both")
 
+#def pvpButtonLogic():
+#    for x in mainFrame.winfo_children():
+#        x.destroy()
 
-def pvpButtonLogic():
+#    choice = IntVar()
+#    textMessage = "."
+
+
+#    createBigSpace()
+#    mainTittle = Label(mainFrame, text="Rock, Papper, Sissors - DELUXE", font=('Comic Sans MS', 40, 'bold'), fg='black', bg='#639fff', relief=RAISED, bd=10)
+#    mainTittle.pack(expand=TRUE, fill="both")
+#    createBigSpace()
+#    messageBox = Label(mainFrame, text="You selected " + textMessage, font=('Comic Sans MS', 30, 'bold'), bg='#639fff')
+#    messageBox.pack(expand=TRUE, fill="both")
+#    createSmallSpace()
+#
+#    def gameLogic():
+#        if (choice.get() == 0):
+#            messageBox.destroy()
+#            textMessage = "Rock"
+#            messageBox = Label(mainFrame, text="You selected " + textMessage, font=('Comic Sans MS', 30, 'bold'), bg='#639fff')
+#            messageBox.pack(expand=TRUE, fill="both")
+ #       elif (choice.get() == 1):
+ #           messageBox.destroy()
+ #           textMessage = "Papper"
+#            createSmallSpace()
+#            messageBox = Label(mainFrame, text="You selected " + textMessage, font=('Comic Sans MS', 30, 'bold'), bg='#639fff')
+#            messageBox.pack(expand=TRUE, fill="both")
+#        elif (choice.get() == 2):
+#            messageBox.destroy()
+#            textMessage = "Scissor"
+#            createSmallSpace()
+#            messageBox = Label(mainFrame, text="You selected " + textMessage, font=('Comic Sans MS', 30, 'bold'), bg='#639fff')
+#            messageBox.pack(expand=TRUE, fill="both")
+#
+#    for index in range(len(listRPS)):
+#        userChoice = Radiobutton(mainFrame, text=listRPS[index], variable=choice, value=index, indicatoron=0, font=('Comic Sans MS', 20, 'bold'), bg='#639fff', command=gameLogic)
+#        userChoice.pack(expand=TRUE, fill="both")
+#        createSmallSpace()
+#    backButton = Button(mainFrame, text="Back", font=('Comic Sans MS', 20, 'bold'), bg='#639fff', command=backButtonLogic)
+ #   backButton.pack(expand=TRUE, fill="both")
+
+def pviButtonLogic():
     for x in mainFrame.winfo_children():
         x.destroy()
 
-    listRPS = ["Rock", "Papper", "Scissor"]
     choice = IntVar()
-    textMessage = "."
-
     createBigSpace()
     mainTittle = Label(mainFrame, text="Rock, Papper, Sissors - DELUXE", font=('Comic Sans MS', 40, 'bold'), fg='black', bg='#639fff', relief=RAISED, bd=10)
     mainTittle.pack(expand=TRUE, fill="both")
     createBigSpace()
-    messageBox = Label(mainFrame, text="You selected " + textMessage, font=('Comic Sans MS', 30, 'bold'), bg='#639fff')
-    messageBox.pack(expand=TRUE, fill="both")
-    createSmallSpace()
 
     def gameLogic():
-        if (choice.get() == 0):
+        textMessage = " "
+        createSmallSpace()
+        messageBox = Label(mainFrame, text= textMessage, font=('Comic Sans MS', 30, 'bold'), bg='#639fff')
+        messageBox.pack(expand=TRUE, fill="both")
+        messageBox.destroy()
+        aiChoice = random.choice(listRPS)
+
+        if choice.get() == aiChoice:
+            textMessage = "It's a DRAW"
             messageBox.destroy()
-            textMessage = "Rock"
-            messageBox = Label(mainFrame, text="You selected " + textMessage, font=('Comic Sans MS', 30, 'bold'), bg='#639fff')
-            messageBox.pack(expand=TRUE, fill="both")
-        elif (choice.get() == 1):
-            messageBox.destroy()
-            textMessage = "Papper"
             createSmallSpace()
-            messageBox = Label(mainFrame, text="You selected " + textMessage, font=('Comic Sans MS', 30, 'bold'), bg='#639fff')
+            messageBox = Label(mainFrame, text= textMessage, font=('Comic Sans MS', 30, 'bold'), bg='#639fff')
             messageBox.pack(expand=TRUE, fill="both")
-        elif (choice.get() == 2):
-            messageBox.destroy()
-            textMessage = "Scissor"
             createSmallSpace()
-            messageBox = Label(mainFrame, text="You selected " + textMessage, font=('Comic Sans MS', 30, 'bold'), bg='#639fff')
-            messageBox.pack(expand=TRUE, fill="both")
+        elif choice.get() == 0:
+            if aiChoice == "Papper":
+                textMessage ="Papper beats Rock, the AI WINS"
+                messageBox.destroy()
+                createSmallSpace()
+                messageBox = Label(mainFrame, text= textMessage, font=('Comic Sans MS', 30, 'bold'), bg='#639fff')
+                messageBox.pack(expand=TRUE, fill="both")
+                createSmallSpace()
+            else:
+                textMessage = "Rock beats Sissors, Player 1 WINS"
+                messageBox.destroy()
+                createSmallSpace()
+                messageBox = Label(mainFrame, text= textMessage, font=('Comic Sans MS', 30, 'bold'), bg='#639fff')
+                messageBox.pack(expand=TRUE, fill="both")
+                createSmallSpace()
+        elif choice.get() == 2:
+            if aiChoice == "Rock":
+                textMessage = "Rock beats Sissors, the AI WINS"
+                messageBox.destroy()
+                createSmallSpace()
+                messageBox = Label(mainFrame, text= textMessage, font=('Comic Sans MS', 30, 'bold'), bg='#639fff')
+                messageBox.pack(expand=TRUE, fill="both")
+                createSmallSpace()
+            else:
+                textMessage = "Sissor beats Papper, Player 1 WINS"
+                messageBox.destroy()
+                createSmallSpace()
+                messageBox = Label(mainFrame, text= textMessage, font=('Comic Sans MS', 30, 'bold'), bg='#639fff')
+                messageBox.pack(expand=TRUE, fill="both")
+                createSmallSpace()
+        elif choice.get() == 1:
+            if aiChoice == "Rock":
+                textMessage = "Papper beats Rock, Player 1 WINS"
+                messageBox.destroy()
+                createSmallSpace()
+                messageBox = Label(mainFrame, text= textMessage, font=('Comic Sans MS', 30, 'bold'), bg='#639fff')
+                messageBox.pack(expand=TRUE, fill="both")
+                createSmallSpace()
+            else:
+                textMessage = "Sissor beats Papper, the AI WINS"
+                messageBox.destroy()
+                createSmallSpace()
+                messageBox = Label(mainFrame, text= textMessage, font=('Comic Sans MS', 30, 'bold'), bg='#639fff')
+                messageBox.pack(expand=TRUE, fill="both")
+
 
     for index in range(len(listRPS)):
         userChoice = Radiobutton(mainFrame, text=listRPS[index], variable=choice, value=index, indicatoron=0, font=('Comic Sans MS', 20, 'bold'), bg='#639fff', command=gameLogic)
         userChoice.pack(expand=TRUE, fill="both")
         createSmallSpace()
-
+    backButton = Button(mainFrame, text="Back", font=('Comic Sans MS', 20, 'bold'), bg='#639fff', command=backButtonLogic)
+    backButton.pack(expand=TRUE, fill="both")
+    
 
 
 def mainMenu():
@@ -94,6 +173,8 @@ def mainMenu():
     exitButton.pack(expand=TRUE, fill="both")
 
 
+listRPS = ["Rock", "Papper", "Scissor"]
+player2Choice = " "
 
 
 

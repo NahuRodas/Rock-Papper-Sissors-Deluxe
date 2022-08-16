@@ -73,6 +73,10 @@ def playButtonLogic():
 #    backButton = Button(mainFrame, text="Back", font=('Comic Sans MS', 20, 'bold'), bg='#639fff', command=backButtonLogic)
  #   backButton.pack(expand=TRUE, fill="both")
 
+def createMessageBox():
+        messageBox = Label(mainFrame, text= textMessage, font=('Comic Sans MS', 30, 'bold'), bg='#639fff')
+        messageBox.pack(expand=TRUE, fill="both")
+
 def pviButtonLogic():
     for x in mainFrame.winfo_children():
         x.destroy()
@@ -84,64 +88,49 @@ def pviButtonLogic():
     createBigSpace()
 
     def gameLogic():
-        textMessage = " "
         createSmallSpace()
-        messageBox = Label(mainFrame, text= textMessage, font=('Comic Sans MS', 30, 'bold'), bg='#639fff')
-        messageBox.pack(expand=TRUE, fill="both")
-        messageBox.destroy()
         aiChoice = random.choice(listRPS)
+        global textMessage 
+        textMessage = " "
+        createMessageBox()
+        messageBox.destroy()
 
         if choice.get() == aiChoice:
             textMessage = "It's a DRAW"
-            messageBox.destroy()
-            createSmallSpace()
-            messageBox = Label(mainFrame, text= textMessage, font=('Comic Sans MS', 30, 'bold'), bg='#639fff')
-            messageBox.pack(expand=TRUE, fill="both")
+            createMessageBox()
             createSmallSpace()
         elif choice.get() == 0:
             if aiChoice == "Papper":
                 textMessage ="Papper beats Rock, the AI WINS"
-                messageBox.destroy()
                 createSmallSpace()
-                messageBox = Label(mainFrame, text= textMessage, font=('Comic Sans MS', 30, 'bold'), bg='#639fff')
-                messageBox.pack(expand=TRUE, fill="both")
+                createMessageBox()
                 createSmallSpace()
             else:
                 textMessage = "Rock beats Sissors, Player 1 WINS"
-                messageBox.destroy()
                 createSmallSpace()
-                messageBox = Label(mainFrame, text= textMessage, font=('Comic Sans MS', 30, 'bold'), bg='#639fff')
-                messageBox.pack(expand=TRUE, fill="both")
+                createMessageBox()
                 createSmallSpace()
         elif choice.get() == 2:
             if aiChoice == "Rock":
                 textMessage = "Rock beats Sissors, the AI WINS"
-                messageBox.destroy()
                 createSmallSpace()
-                messageBox = Label(mainFrame, text= textMessage, font=('Comic Sans MS', 30, 'bold'), bg='#639fff')
-                messageBox.pack(expand=TRUE, fill="both")
+                createMessageBox()
                 createSmallSpace()
             else:
                 textMessage = "Sissor beats Papper, Player 1 WINS"
-                messageBox.destroy()
                 createSmallSpace()
-                messageBox = Label(mainFrame, text= textMessage, font=('Comic Sans MS', 30, 'bold'), bg='#639fff')
-                messageBox.pack(expand=TRUE, fill="both")
+                createMessageBox()
                 createSmallSpace()
         elif choice.get() == 1:
             if aiChoice == "Rock":
                 textMessage = "Papper beats Rock, Player 1 WINS"
-                messageBox.destroy()
                 createSmallSpace()
-                messageBox = Label(mainFrame, text= textMessage, font=('Comic Sans MS', 30, 'bold'), bg='#639fff')
-                messageBox.pack(expand=TRUE, fill="both")
+                createMessageBox()
                 createSmallSpace()
             else:
                 textMessage = "Sissor beats Papper, the AI WINS"
-                messageBox.destroy()
                 createSmallSpace()
-                messageBox = Label(mainFrame, text= textMessage, font=('Comic Sans MS', 30, 'bold'), bg='#639fff')
-                messageBox.pack(expand=TRUE, fill="both")
+                createMessageBox()
 
 
     for index in range(len(listRPS)):
@@ -175,6 +164,9 @@ def mainMenu():
 
 listRPS = ["Rock", "Papper", "Scissor"]
 player2Choice = " "
+global messageBox
+
+
 
 
 
